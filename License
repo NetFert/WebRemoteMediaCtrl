@@ -1,0 +1,24 @@
+THIRD-PARTY LICENSES
+
+Apache License, Version 2.0 License URL: https://www.apache.org/licenses/LICENSE-2.0
+MIT License URL: https://opensource.org/license/mit/
+
+This software includes the following third-party libraries:
+
+1. robotgo
+
+   - Copyright: (c) go-vgo and other contributors
+   - License: Apache License, Version 2.0
+   - Project URL: https://github.com/go-vgo/robotgo
+
+2. Gin Web Framework
+
+   - Copyright: (c) Manuel Martínez-Almeida
+   - License: MIT License
+   - Project URL: https://github.com/gin-gonic/gin
+
+3. Qrcodejs
+
+   - Copyright: (c) davidshimjs
+   - License: MIT License
+   - Project URL: https://github.com/davidshimjs/qrcodejs

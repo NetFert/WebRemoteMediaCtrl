@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>♪</title>
+    <script src="./qrcode.min.js"></script>
+  </head>
+  <style>
+    .qrcode {
+      text-align: center;
+      margin: auto;
+      width: max-content;
+      margin-top: 10px;
+    }
+    .qrcode #qrcode_btn {
+      margin-bottom: 10px;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: auto;
+      width: max-content;
+    }
+    .buttons + .buttons {
+      margin-top: 15px;
+    }
+    button {
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+      border-radius: 10px;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      body {
+        background-color: #ffffff;
+        color: #000000;
+      }
+    }
+  </style>
+  <body>
+    <!-- play pause stop previous next volume_up volume_down mute un_mute -->
+    <div class="buttons">
+      <button onclick="mediaControl('previous')">⏮</button>
+      <button onclick="mediaControl('pause')">⏸</button>
+      <button onclick="mediaControl('play')">▶</button>
+      <button onclick="mediaControl('stop')">⏹</button>
+      <button onclick="mediaControl('next')">⏭</button>
+    </div>
+    <div class="buttons">
+      <button onclick="mediaControl('mute')">🔇</button>
+      <button onclick="mediaControl('un_mute')">🔊</button>
+      <button onclick="mediaControl('volume_down')">🔉-</button>
+      <button onclick="mediaControl('volume_up')">🔊+</button>
+    </div>
+
+    <div class="qrcode">
+      <button id="qrcode_btn" onclick="showQrCode()">🤳</button>
+      <div id="qrcode"></div>
+    </div>
+  </body>
+  <script>
+    let dom = null;
+    let domTimeoutId = null;
+    const toast = (msg) => {
+      if (dom) {
+        domTimeoutId && clearTimeout(domTimeoutId);
+        dom.remove();
+      }
+
+      dom = document.createElement("div");
+      dom.style.cssText = `
+        position:fixed;bottom:5%;margin:auto;left:0;right:0;
+        text-align:center;
+        background:#000;color:#fff;
+        padding:12px 20px;border-radius:8px;
+        z-index:9999;font-size:14px;
+        transform:translateX(0);
+        transition:transform 0.5s ease;
+    `;
+
+      dom.textContent = msg;
+      document.body.appendChild(dom);
+      domTimeoutId = setTimeout(() => {
+        dom.style.transform = "translateY(200%)";
+        setTimeout(() => dom.remove(), 300);
+      }, 1500);
+    };
+
+    const mediaControl = (operation) => {
+      fetch("/media?operation=" + operation)
+        .then((res) => res.json())
+        .then((res) => {
+          toast(operation + " : " + res.msg);
+        });
+    };
+
+    const showQrCode = () => {
+      let qrcode = document.getElementById("qrcode");
+
+      if (qrcode.innerHTML === "") {
+        new QRCode(qrcode, window.location.href);
+        toast("QR Code Generated");
+      } else {
+        qrcode.innerHTML = "";
+        toast("QR Code Removed");
+      }
+    };
+  </script>
+</html>
