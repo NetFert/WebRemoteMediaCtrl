@@ -15,31 +15,22 @@ func Media(c *gin.Context) {
 	switch operation {
 	case "play":
 		err = robotgo.KeyTap(robotgo.AudioPlay)
-		break
 	case "pause":
 		err = robotgo.KeyTap(robotgo.AudioPause)
-		break
 	case "stop":
 		err = robotgo.KeyTap(robotgo.AudioStop)
-		break
 	case "previous":
 		err = robotgo.KeyTap(robotgo.AudioPrev)
-		break
 	case "next":
 		err = robotgo.KeyTap(robotgo.AudioNext)
-		break
 	case "volume_up":
 		err = robotgo.KeyTap(robotgo.AudioVolUp)
-		break
 	case "volume_down":
 		err = robotgo.KeyTap(robotgo.AudioVolDown)
-		break
 	case "mute":
 		err = robotgo.KeyTap(robotgo.AudioMute)
-		break
 	case "un_mute":
 		err = robotgo.KeyTap(robotgo.AudioMute)
-		break
 	default:
 		err = errors.New("Unknown operation" + operation)
 	}
