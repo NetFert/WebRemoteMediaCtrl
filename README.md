@@ -15,6 +15,18 @@
 
 ---
 
+## ⏬ Download & Use
+
+**Releases:**
+- [GitHub Releases](https://github.com/NetFert/WebRemoteMediaCtrl)
+- [Gitee Releases](https://gitee.com/NetFert/WebRemoteMediaCtrl)
+
+---
+
+![Preview](record.gif)
+
+---
+
 ## 🚀 Features
 
 * 🎶 **Playback Control:** Play, pause, stop, previous, next
