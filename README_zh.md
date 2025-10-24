@@ -17,8 +17,8 @@
 ## ⏬ 下载使用
 
 **下载:**
-- [GitHub Releases](https://github.com/NetFert/WebRemoteMediaCtrl)
-- [Gitee Releases](https://gitee.com/NetFert/WebRemoteMediaCtrl)
+- [GitHub Releases](https://github.com/NetFert/WebRemoteMediaCtrl/releases/)
+- [Gitee Releases](https://gitee.com/NetFert/WebRemoteMediaCtrl/releases/)
 
 ---
 
